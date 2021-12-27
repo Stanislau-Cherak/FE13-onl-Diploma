@@ -4,7 +4,7 @@
 
 **type:** educational project (Front End)
 
-**technologies used in the project: JavaScript, SASS, Parcel** 
+**technologies used in the project: React, TypeScript, SASS, Webpack** 
 
 **School: [TeachMeSkills](https://teachmeskills.by)**
 
