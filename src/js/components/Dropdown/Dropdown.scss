@@ -1,0 +1,85 @@
+@mixin styling() {
+  border-color: #185ee0;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #fff;
+	box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15) !important;
+}
+
+.dropdown-wrapper {
+    display: flex;
+    min-height: 38px;
+    flex-wrap: wrap;
+    font-size: 1.25rem;
+    .dropdown-header {
+      @include styling();
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      width: 100%;
+      padding: 1.2rem 2rem;
+      &_title-bold {
+        display: block;
+        margin-right: 1rem;
+        font-weight: bold;
+      }
+      &_action.close::after {
+        display: block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #185ee0;
+        border-bottom: 2px solid #185ee0;
+        transform: rotate(45deg);
+      }
+      &_action.open::after {
+        display: block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #185ee0;
+        border-bottom: 2px solid #185ee0;
+        transform: rotate(225deg);
+      }
+    }
+    .dropdown-list {
+      box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15) !important;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      margin-top: -1px;
+      li {
+        list-style-type: none;
+        &:first-of-type {
+          > button {
+            border-top: 1px solid #185ee0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+        }
+        &:last-of-type > button {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+        button {
+          display: flex;
+          justify-content: space-between;
+          background-color: white;
+          padding: 1.2rem 2rem;
+          border: 0;
+          border-bottom: 1px solid #185ee0;
+          width: 100%;
+          text-align: left;
+          border-left: 1px solid #185ee0;
+          border-right: 1px solid #185ee0;
+  
+          &:hover, &:focus {
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #185ee0;
+          }
+        }
+      }
+    }
+}
