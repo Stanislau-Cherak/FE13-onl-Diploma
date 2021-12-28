@@ -1,7 +1,13 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 
 import Button from '../Button/Button.tsx';
 import Dropdown from '../Dropdown/Dropdown.tsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
+import HomePage from '../HomePage/HomePage.jsx';
+import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
+
 
 
 import './App.scss';
@@ -12,7 +18,13 @@ function App() {
 
     return (
         <div className='container'>
-            <Dropdown optionsList={['3h','12h','1d','3d','7d']} onChange={(value)=>console.log(value)}/>
+            <Sidebar />
+            <div className='content-wrapper'>
+                <Routes>
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='*' element={<NotFoundPage />} />
+                </Routes>
+            </div>
         </div>
     );
 }
