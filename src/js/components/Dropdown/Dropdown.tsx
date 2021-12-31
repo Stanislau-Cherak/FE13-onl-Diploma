@@ -29,7 +29,7 @@ const Dropdown: React.FC<DropdownProps> = ({ optionsList, onClick }) => {
   return (
     <div ref={ref} className='dropdown-wrapper'>
       <div
-        tabIndex={0}
+        tabIndex={1}
         className='dropdown-header'
         role='button'
         onKeyPress={toggle}

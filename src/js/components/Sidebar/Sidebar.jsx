@@ -1,52 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import classNames from 'classnames';
 
+import MenuItem from '../MenuItem/MenuItem.tsx';
+import MenuList from '../MenuItem/MenuList.ts';
+import Menu from '../../../image/menu.svg';
+import Close from '../../../image/close.svg';
 
 import './Sidebar.scss';
-import HomeImage from './home.svg';
-import Cryptocurrencies from './cyrrencies.svg';
-import Exchanges from './exchange.svg';
-import News from './news.svg';
 
 const Sidebar = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
+
     return (
-        <nav className='navigation'>
+
+        <nav className={classNames('navigation', isOpen ? 'bg' : undefined)}>
+
+            <div
+                tabIndex={0}
+                role='button'
+                onKeyPress={toggle}
+                onClick={toggle}
+                className='expand-button'>
+                {isOpen
+                    ? <img src={Close} className='icon' alt='Close' />
+                    : <img src={Menu} className='icon' alt='Menu' />}
+            </div>
+
             <ul>
-                <li className='list active'>
-                    <b></b>
-                    <b></b>
-                    <Link to='/'>
-                        <img src={HomeImage} className='icon' alt='Home' />
-                        <span className='title'>Home</span>
-                    </Link>
-                </li>
-
-                <li className='list'>
-                    <b></b>
-                    <b></b>
-                    <Link to='/Cryptocurrencies'>
-                        <img src={Cryptocurrencies} className='icon' alt='Cryptocurrencies' />
-                        <span className='title'>Cryptocurrencies</span>
-                    </Link>
-                </li>
-
-                <li className='list'>
-                    <b></b>
-                    <b></b>
-                    <Link to='/Exchanges'>
-                        <img src={Exchanges} className='icon' alt='Exchanges' />
-                        <span className='title'>Exchanges</span>
-                    </Link>
-                </li>
-
-                <li className='list'>
-                    <b></b>
-                    <b></b>
-                    <Link to='/News'>
-                        <img src={News} className='icon' alt='News' />
-                        <span className='title'>News</span>
-                    </Link>
-                </li>
+                {
+                    MenuList.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                <MenuItem {...item} />
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </nav>
     )
