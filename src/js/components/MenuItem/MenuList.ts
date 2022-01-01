@@ -1,7 +1,7 @@
 const HomeImage = require('../../../image/home.svg') as string;
-const CryptocurrenciesImage = require ('../../../image/cyrrencies.svg') as string;
-const ExchangesImage =require ('../../../image/exchange.svg') as string;
-const NewsImage=require('../../../image/news.svg') as string;
+const CryptocurrenciesImage = require('../../../image/cyrrencies.svg') as string;
+const ExchangesImage = require('../../../image/exchange.svg') as string;
+const NewsImage = require('../../../image/news.svg') as string;
 
 interface MenuListTypes {
     title: string;
@@ -9,7 +9,7 @@ interface MenuListTypes {
     image: any;
 }
 
-const MenuList : MenuListTypes []= [
+const MenuList: MenuListTypes[] = [
     {
         title: 'Home',
         path: '/',

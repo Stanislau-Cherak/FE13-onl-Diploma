@@ -6,8 +6,6 @@ import App from './components/App/App.jsx';
 
 import '../scss/reset.scss';
 
-
-
 ReactDOM.render(
     <BrowserRouter>
         <App />

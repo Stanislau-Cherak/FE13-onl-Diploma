@@ -12,5 +12,5 @@ body {
   display: grid;
   grid-template-columns:  auto 1fr;
   grid-template-areas: 'sidebar content' 'footer footer';
-  gap: 15px;  
+  gap: 15px;
 }
