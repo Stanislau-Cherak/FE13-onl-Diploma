@@ -1,5 +1,7 @@
 import React from "react";
 
+import { nFormatter } from "../../helpers/nFormatter.js";
+
 import './CoinCard.scss';
 
 interface CoinCardProps {
@@ -13,6 +15,9 @@ interface CoinCardProps {
 
 const CoinCard: React.FC<CoinCardProps> = ({ rank, name, iconUrl, price, marketCap, change }) => {
 
+    const preparedPrice=nFormatter(Number(price), 2);
+    const preparedMarketCap=nFormatter(Number(marketCap), 2);
+
     return (
         <>
             <div className='card-header'>
@@ -21,10 +26,10 @@ const CoinCard: React.FC<CoinCardProps> = ({ rank, name, iconUrl, price, marketC
             </div>
             <div className='card-body'>
                 <span className='card-body_text'>
-                    Price: {price}
+                    Price: {preparedPrice}
                 </span>
                 <span className='card-body_text'>
-                    Market Cap: {marketCap}
+                    Market Cap: {preparedMarketCap}
                 </span>
                 <span className='card-body_text'>
                     Daily Change: {change}

@@ -3,13 +3,13 @@ const CryptocurrenciesImage = require('../../../image/cyrrencies.svg') as string
 const ExchangesImage = require('../../../image/exchange.svg') as string;
 const NewsImage = require('../../../image/news.svg') as string;
 
-interface MenuListTypes {
+interface menuListTypes {
     title: string;
     path: string;
     image: any;
 }
 
-const MenuList: MenuListTypes[] = [
+const menuList: menuListTypes[] = [
     {
         title: 'Home',
         path: '/',
@@ -32,4 +32,4 @@ const MenuList: MenuListTypes[] = [
     },
 ];
 
-export default MenuList; 
+export default menuList; 

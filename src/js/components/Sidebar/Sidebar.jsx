@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import MenuItem from '../MenuItem/MenuItem.tsx';
-import MenuList from '../MenuItem/MenuList.ts';
+import menuList from '../MenuItem/menuList.ts';
 import Menu from '../../../image/menu.svg';
 import Close from '../../../image/close.svg';
 
@@ -30,7 +30,7 @@ const Sidebar = () => {
 
             <ul>
                 {
-                    MenuList.map((item, index) => {
+                    menuList.map((item, index) => {
                         return (
                             <li key={index}>
                                 <MenuItem {...item} />
