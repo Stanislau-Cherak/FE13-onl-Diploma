@@ -20,6 +20,7 @@ export const optionsNewsSearch = {
         safeSearch: 'Moderate',
         textFormat: 'Raw',
         freshness: 'Week',
+        mkt: 'en-US',
         count: '33'
     },
     headers: {

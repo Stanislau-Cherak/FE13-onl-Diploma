@@ -6,7 +6,10 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: {
         main: './js/index.jsx',
-    },    
+    },
+    output: {
+        publicPath: '/'
+    },     
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({

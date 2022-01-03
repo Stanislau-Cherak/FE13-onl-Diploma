@@ -2,21 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin: 0px -10px 15px -10px;
     &_title {
         font-size: 1.5rem;
         font-weight: 600;
+        margin: 0px 10px;
+
     }
     img{
         width: 30px;
         height: 30px;
+        margin: 0px 10px;
     }
 }
 
 .card-body {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     .card-body_text {
         display: block;
         margin-bottom: 10px;
+        line-height: 1.5rem;
     }
 }

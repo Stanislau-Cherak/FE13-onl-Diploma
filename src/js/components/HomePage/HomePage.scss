@@ -1,5 +1,58 @@
-.home_title {
-    margin-top: 100px;
-    font-size: 24px;
-    font-weight: 600;
+@import '../CoinCard/CoinCard.scss';
+
+.home-statistics_section {
+    margin-bottom: 75px;
 }
+.home-coins_section {
+    margin-bottom: 50px;
+}
+
+.home_title {
+    display: block;
+    margin-bottom: 50px;
+    font-size: calc(15px + 1vw);
+    color:#185ee0;
+    font-weight: 600;    
+}
+
+.home-statistics_cards {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: calc(10px + 1vw);
+    font-weight: 500;
+    justify-content: space-evenly;
+    margin: 0 -15px;
+    .home-statistics_text {
+        display: block;
+        margin: 0 15px 35px;
+        &:nth-last-child(1) {
+            margin: 0 15px;
+        } 
+    }
+}
+
+.home-coins_cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+    align-items: flex-end;    
+    .coin-card {
+        flex:1 1 27%;
+        min-width: 200px;
+        margin: 0px 15px 25px;
+        padding: 15px 20px;
+        border: 2px solid #185ee0;
+        border-radius: 5px;
+        box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);          
+    }
+    a {
+        display: block;
+        flex:1 1 60%;
+        margin: 0px 15px 25px;
+        font-size: calc(15px + 1vw);
+        font-weight: 600;
+        color:#185ee0;
+    }    
+}
+

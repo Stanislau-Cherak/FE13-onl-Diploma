@@ -2,26 +2,27 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 0 -15px;
     .coin-card {
-        flex:0 1 27%;
-        margin: 0px 15px 50px;
+        flex:1 1 27%;
+        min-width: 200px;
+        margin: 0px 15px 25px;
         padding: 15px 20px;
         border: 2px solid #185ee0;
         border-radius: 5px;
-        box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);  
-    }    
+        box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);          
+    }
 }
 
 .form {
     display:flex;
     flex-wrap: wrap;
+    max-width: 60%;
     margin-bottom: 50px;
     #search {
-        margin: 0 15px;
         padding: 10px;
-        width: 50%;
         font-weight: 500;
-        font-size: 1.2rem;
+        font-size: calc(10px + 0.5vw);
         resize: none;
         overflow: auto;
         border-radius: 5px;
