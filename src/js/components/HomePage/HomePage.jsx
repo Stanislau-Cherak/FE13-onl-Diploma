@@ -8,6 +8,8 @@ import { nFormatter } from "../../helpers/nFormatter.js";
 import { sFormatter } from '../../helpers/sFormatter.js';
 import { optionsGetCoins, optionsNewsSearch } from '../../helpers/axiosOptions.js';
 
+import NoImage from '../../../image/no_image.jpg';
+
 import './HomePage.scss';
 
 const HomePage = () => {
@@ -17,7 +19,7 @@ const HomePage = () => {
     const [isBusy, setIsBusy] = useState(true);
 
     optionsGetCoins.params.limit = '10';
-    optionsNewsSearch.params.count = '5';
+    optionsNewsSearch.params.count = '6';
 
     useEffect(() => {
 
@@ -84,13 +86,14 @@ const HomePage = () => {
                                 news.map((news, index) => {
                                     return (
                                         <div key={index} className='news-card'>
-                                            <NewsCard 
-                                            newsName={news.name}
-                                            newsUrl={news.url}
-                                            newsDescription={news.description}
-                                            providerName={news.provider[0].name}
-                                            providerUrl={news.provider[0].image.thumbnail.contentUrl}
-                                            publishedDate={sFormatter(news.datePublished)}                                             
+                                            <NewsCard
+                                                newsName={news.name}
+                                                newsUrl={news.url}
+                                                newsDescription={news.description}
+                                                newsImage={news.image ? news.image.thumbnail.contentUrl : NoImage}
+                                                providerName={news.provider[0].name}
+                                                providerUrl={news.provider[0].image ? news.provider[0].image.thumbnail.contentUrl : NoImage}
+                                                publishedDate={sFormatter(news.datePublished)}
                                             />
                                         </div>
                                     )

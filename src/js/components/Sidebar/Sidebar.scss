@@ -12,7 +12,7 @@
     border-left: 5px solid #185ee0;
     transition: 0.5s;
     overflow-x: hidden;
-    @media (max-width:1000px) {
+    @media (max-width:900px) {
         width: 60px;
     }    
     ul {
@@ -22,7 +22,7 @@
         width: 100%;
         padding-left: 0.5rem;
         padding-top: 3rem;
-        @media (max-width:1000px) {
+        @media (max-width:899px) {
             padding-top: 0.5rem;
         }
         li {           
@@ -122,7 +122,7 @@
     border-bottom-left-radius: 20px;
     cursor: pointer;
     transition: 0.5s;
-    @media (min-width:1000px) {
+    @media (min-width:900px) {
         display: none;
     }
     .icon {

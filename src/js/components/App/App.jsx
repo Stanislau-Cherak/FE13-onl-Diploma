@@ -7,6 +7,7 @@ import Sidebar from '../Sidebar/Sidebar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import HomePage from '../HomePage/HomePage.jsx';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies.jsx';
+import News from '../News/News.jsx';
 import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
 
 import './App.scss';
@@ -20,6 +21,9 @@ function App() {
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/Cryptocurrencies' element={<Cryptocurrencies />} />
+                    <Route path='/News' element={<News />}>
+                    <Route path='/News/:search' element={<News />}/>
+                    </Route>
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
             </div>
