@@ -4,6 +4,8 @@ import axios from "axios";
 
 import CoinCard from '../CoinCard/CoinCard.tsx';
 import NewsCard from '../NewsCard/NewsCard.tsx';
+import LoadingBar from '../LoadingBar/LoadingBar.tsx';
+
 import { nFormatter } from "../../helpers/nFormatter.js";
 import { sFormatter } from '../../helpers/sFormatter.js';
 import { optionsGetCoins, optionsNewsSearch } from '../../helpers/axiosOptions.js';
@@ -20,6 +22,8 @@ const HomePage = () => {
 
     optionsGetCoins.params.limit = '10';
     optionsNewsSearch.params.count = '6';
+    optionsNewsSearch.params.q = 'Cryptocurrencies';
+
 
     useEffect(() => {
 
@@ -38,7 +42,7 @@ const HomePage = () => {
 
         <>
             {isBusy
-                ? null
+                ? <LoadingBar className='loading-bar_wrapper'/>
                 :
                 <>
                     <div className='home-statistics_section'>

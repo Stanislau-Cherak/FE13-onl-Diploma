@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { optionsGetCoins } from '../../helpers/axiosOptions.js';
+
 import CoinCard from '../CoinCard/CoinCard.tsx';
+import LoadingBar from '../LoadingBar/LoadingBar.tsx';
+
 
 import './Cryptocurrencies.scss';
 
@@ -28,7 +31,7 @@ const Cryptocurrencies = () => {
     return (
         <>
             {isBusy
-                ? null
+                ? <LoadingBar className='loading-bar_wrapper'/>
                 :
                 <>
                     <div className='form'>

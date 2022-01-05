@@ -15,11 +15,10 @@
 }
 
 .form {
-    display:flex;
-    flex-wrap: wrap;
     max-width: 60%;
     margin-bottom: 50px;
     #search {
+        width: 100%;
         padding: 10px;
         font-weight: 500;
         font-size: calc(10px + 0.5vw);

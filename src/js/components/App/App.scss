@@ -15,5 +15,9 @@ body {
   gap: 15px;
   .content-wrapper {
     grid-area: content;
-  }
+    .loading-bar_wrapper {
+      width: 100%;
+      height: 100%;
+    }
+  }  
 }

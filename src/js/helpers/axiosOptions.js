@@ -19,15 +19,15 @@ export const optionsNewsSearch = {
         q: 'Cryptocurrencies',
         safeSearch: 'Moderate',
         textFormat: 'Raw',
-        freshness: 'Week',
+        freshness: 'Month',
         mkt: 'en-US',
-        count: '33'
+        count: '20'
     },
     headers: {
         'accept-language': 'en',
         'x-bingapis-sdk': 'true',
         'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',
-        'x-rapidapi-key': 'dbd484c3camshda218e5f7671c8dp17ca79jsn03298ac7b16b'
+        'x-rapidapi-key': '0060b8ce00mshcdd4cc91e36faefp1f326fjsncf88ec66cf0f'
     }
 };
 
