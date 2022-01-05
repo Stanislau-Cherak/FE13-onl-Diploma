@@ -52,6 +52,10 @@ const News = () => {
     optionsNewsSearch.params.count = '20';
     optionsNewsSearch.params.q = searchNewsRequest;
 
+    useEffect(()=>{
+        setSearchNewsRequest(search || 'Cryptocurrencies');
+    }, [search])
+
     useEffect(() => {
 
         const coinsPromise = axios.request(optionsGetCoins);
