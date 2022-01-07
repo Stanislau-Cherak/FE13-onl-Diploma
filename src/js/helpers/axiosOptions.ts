@@ -9,6 +9,15 @@ export const axiosOptionsCoins: AxiosRequestConfig = {
     }
 }
 
+export const axiosOptionsExchanges: AxiosRequestConfig = {
+    method: 'GET',
+    url: 'https://coinranking1.p.rapidapi.com/exchanges',
+    headers: {
+        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+        'x-rapidapi-key': '7d7142ee90msh51e0c53239d7405p1f81d5jsn078463297446'
+    }
+}
+
 export function getAxiosOptionsCoin(id: number): AxiosRequestConfig  {
     return {
         method: 'GET',

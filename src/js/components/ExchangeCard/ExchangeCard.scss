@@ -1,0 +1,50 @@
+.exchange-card {
+  display: grid;
+  justify-items: end;
+  align-items: center;
+  grid-template-columns:  1fr 1fr 1fr 1fr;
+  grid-template-areas: 'title 24hVolume market share' 'description description description description';
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0px 0px 25px;
+  padding: 10px 10px 0px 10px;
+  border-radius: 5px;
+  border: 2px solid #185ee0;
+  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15); 
+  &_title {
+    justify-self: left;
+    display: flex;
+    align-items: center;
+    grid-area: title;    
+    img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+    }
+  }
+  &_volume {
+    grid-area: 24hVolume;
+  } 
+  &_market {
+    grid-area: market;
+  } 
+  &_share {
+    grid-area: share;
+  }  
+}
+
+.exchange_description {
+  grid-area: description;
+  justify-self: start;
+  margin-bottom: 10px;
+  font-size: 1.1rem;  
+  font-weight: 500;
+  line-height: 1.2rem;
+  p{
+    margin-bottom: 5px;
+  }
+  a{
+    color:#185ee0;
+  }
+}

@@ -1,4 +1,10 @@
-type StatsType = {
+export type menuListType = {
+    title: string;
+    path: string;
+    image: string;
+}
+
+type StatsCoinsType = {
     total: number;
     offset: number;
     limit: number;
@@ -15,15 +21,15 @@ type BaseType = {
     sign: string;
 }
 
-type LinkType={
-    name:string;
-    url:string;
-    type:string;
+type LinkType = {
+    name: string;
+    url: string;
+    type: string;
 }
 
-type allTimeHighType={
-    price:string;
-    timestamp:number;
+type allTimeHighType = {
+    price: string;
+    timestamp: number;
 }
 
 export type CoinType = {
@@ -55,18 +61,56 @@ export type CoinType = {
     rank: number;
     history: string[];
     allTimeHigh: allTimeHighType;
-    penaltu:boolean;
+    penaltu: boolean;
 }
 
-export type DataCoinsType={
-    stats: StatsType;
+export type DataCoinsType = {
+    stats: StatsCoinsType;
     base: BaseType;
     coins: CoinType[];
 }
 
-type DataCoinType={
+type DataCoinType = {
     base: BaseType;
-    coin:CoinType;
+    coin: CoinType;
+}
+
+type CurrenciesType = {
+    iconUrl: string;
+    id: number;
+    name: string;
+    sign: string;
+    symbol: string;
+    type: string;
+    uuid: string;
+}
+
+export type ExchangeType = {
+    description: string;
+    iconUrl: string;
+    id: number;
+    lastTickerCreatedAt: number;
+    marketShare: number;
+    name: string;
+    numberOfMarkets: number;
+    rank: number;
+    uuid: string;
+    verified: boolean;
+    volume: number;
+    websiteUrl: string;
+}
+
+type StatsExchangesType = {
+    limit: number;
+    offset: number;
+    total: number;
+    volume: number;
+}
+
+type DataExchangesType = {
+    currencies: CurrenciesType[];
+    exchanges: ExchangeType[];
+    stats: StatsExchangesType;
 }
 
 export interface CoinsResponce {
@@ -79,8 +123,7 @@ export interface CoinResponce {
     data: DataCoinType;
 }
 
-export type menuListType = {
-    title: string;
-    path: string;
-    image: string;
+export interface ExchangesResponce {
+    status: string;
+    data: DataExchangesType;
 }

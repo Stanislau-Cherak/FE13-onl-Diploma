@@ -5,6 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Footer from '../Footer/Footer';
 import HomePage from '../HomePage/HomePage';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
+import Exchanges from '../Exchanges/Exchanges';
 import News from '../News/News';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
@@ -19,6 +20,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/Cryptocurrencies' element={<Cryptocurrencies />} />
+                    <Route path='/Exchanges' element={<Exchanges />} />
                     <Route path='/News' element={<News />}>
                     <Route path='/News/:search' element={<News />}/>
                     </Route>
