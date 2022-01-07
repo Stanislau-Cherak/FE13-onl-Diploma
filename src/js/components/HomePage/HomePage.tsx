@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from "axios";
 
-import CoinCard from '../CoinCard/CoinCard.tsx';
-import NewsCard from '../NewsCard/NewsCard.tsx';
-import LoadingBar from '../LoadingBar/LoadingBar.tsx';
+import CoinCard from '../CoinCard/CoinCard';
+import NewsCard from '../NewsCard/NewsCard';
+import LoadingBar from '../LoadingBar/LoadingBar';
 
-import { nFormatter } from "../../helpers/nFormatter.js";
-import { sFormatter } from '../../helpers/sFormatter.js';
-import { optionsGetCoins, optionsNewsSearch } from '../../helpers/axiosOptions.js';
+import { nFormatter } from "../../helpers/nFormatter";
+import { sFormatter } from '../../helpers/sFormatter';
+import { axiosOptionsCoins, getAxiosOptionsNews } from '../../helpers/axiosOptions';
+
+import { DataCoinsType, CoinsResponce } from '../../types/types';
 
 import NoImage from '../../../image/no_image.jpg';
 
@@ -16,18 +18,15 @@ import './HomePage.scss';
 
 const HomePage = () => {
 
-    const [coins, setCoins] = useState([]);
+    const [coinsAllData, setCoins] = useState<DataCoinsType>();
     const [news, setNews] = useState([]);
-    const [isBusy, setIsBusy] = useState(true);
+    const [isBusy, setIsBusy] = useState<boolean>(true);
 
-    optionsGetCoins.params.limit = '10';
-    optionsNewsSearch.params.count = '6';
-    optionsNewsSearch.params.q = 'Cryptocurrencies';
-
+    const optionsNewsSearch = getAxiosOptionsNews(5, 'Cryptocurrencies');
 
     useEffect(() => {
 
-        const coinsPromise = axios.request(optionsGetCoins);
+        const coinsPromise = axios.request<CoinsResponce>(axiosOptionsCoins);
         const newsPromise = axios.request(optionsNewsSearch);
 
         Promise.all([coinsPromise, newsPromise])
@@ -42,26 +41,26 @@ const HomePage = () => {
 
         <>
             {isBusy
-                ? <LoadingBar className='loading-bar_wrapper'/>
+                ? <LoadingBar className='loading-bar_wrapper' />
                 :
                 <>
                     <div className='home-statistics_section'>
                         <h2 className='home_title'>Global Crypto Stats</h2>
                         <div className='home-statistics_cards'>
                             <span className='home-statistics_text'>
-                                Total Cryptocurrencies: {coins.stats.totalCoins}
+                                Total Cryptocurrencies: {coinsAllData.stats.total}
                             </span>
                             <span className='home-statistics_text'>
-                                Total Market Cap: {nFormatter(Number(coins.stats.totalMarketCap), 1)}
+                                Total Market Cap: {nFormatter(Number(coinsAllData.stats.totalMarketCap), 1)}
                             </span>
                             <span className='home-statistics_text'>
-                                Total Exchanges: {coins.stats.totalExchanges}
+                                Total Exchanges: {coinsAllData.stats.totalExchanges}
                             </span>
                             <span className='home-statistics_text'>
-                                Total Volume(24h): {nFormatter(Number(coins.stats.total24hVolume), 1)}
+                                Total Volume(24h): {nFormatter(Number(coinsAllData.stats.total24hVolume), 1)}
                             </span>
                             <span className='home-statistics_text'>
-                                Total Markets: {coins.stats.totalMarkets}
+                                Total Markets: {coinsAllData.stats.totalMarkets}
                             </span>
                         </div>
                     </div>
@@ -71,11 +70,9 @@ const HomePage = () => {
 
                         <div className='home-coins_cards'>
                             {
-                                coins.coins.map((coin, index) => {
+                                coinsAllData.coins.slice(0, 10).map((coin, index) => {
                                     return (
-                                        <div key={index} className='coin-card'>
-                                            <CoinCard {...coin} />
-                                        </div>
+                                        <CoinCard key={index} {...coin} />
                                     )
                                 })
                             }
@@ -89,17 +86,14 @@ const HomePage = () => {
                             {
                                 news.map((news, index) => {
                                     return (
-                                        <div key={index} className='news-card'>
-                                            <NewsCard
-                                                newsName={news.name}
-                                                newsUrl={news.url}
-                                                newsDescription={news.description}
-                                                newsImage={news.image ? news.image.thumbnail.contentUrl : NoImage}
-                                                providerName={news.provider[0].name}
-                                                providerUrl={news.provider[0].image ? news.provider[0].image.thumbnail.contentUrl : NoImage}
-                                                publishedDate={sFormatter(news.datePublished)}
-                                            />
-                                        </div>
+                                        <NewsCard key={index}
+                                            newsName={news.name}
+                                            newsUrl={news.url}
+                                            newsDescription={news.description}
+                                            newsImage={news.image ? news.image.thumbnail.contentUrl : NoImage}
+                                            providerName={news.provider[0].name}
+                                            publishedDate={sFormatter(news.datePublished)}
+                                        />
                                     )
                                 })
                             }

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import classNames from 'classnames';
 
-import useClickOutside from '../../helpers/useClickOutside.jsx';
+import useClickOutside from '../../helpers/useClickOutside';
 
 import './Dropdown.scss';
 

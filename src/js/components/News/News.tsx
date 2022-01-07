@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 
-import useClickOutside from '../../helpers/useClickOutside.jsx';
+import useClickOutside from '../../helpers/useClickOutside';
 
-import { optionsGetCoins, optionsNewsSearch } from '../../helpers/axiosOptions.js';
-import { aFilter } from '../../helpers/aFilter.js';
-import { sFormatter } from '../../helpers/sFormatter.js';
+import { axiosOptionsCoins, getAxiosOptionsNews } from '../../helpers/axiosOptions';
+import { aFilter } from '../../helpers/aFilter';
+import { sFormatter } from '../../helpers/sFormatter';
 
-import NewsCard from '../NewsCard/NewsCard.tsx';
-import LoadingBar from '../LoadingBar/LoadingBar.tsx';
+import NewsCard from '../NewsCard/NewsCard';
+import LoadingBar from '../LoadingBar/LoadingBar';
 
 import NoImage from '../../../image/no_image.jpg';
+
+import { CoinType, CoinsResponce } from "../../types/types";
 
 import './News.scss';
 
@@ -22,11 +24,11 @@ const News = () => {
     const { search } = useParams();
 
     const [news, setNews] = useState([]);
-    const [coins, setCoins] = useState([]);
-    const [searchNewsRequest, setSearchNewsRequest] = useState(search || 'Cryptocurrencies');
-    const [searchCoinMask, setSearchCoinMask] = useState('');
-    const [isBusy, setIsBusy] = useState(true);
-    const [isOpen, setIsOpen] = useState(true);
+    const [coins, setCoins] = useState<CoinType[]>([]);
+    const [searchNewsRequest, setSearchNewsRequest] = useState<string>(search || 'Cryptocurrencies');
+    const [searchCoinMask, setSearchCoinMask] = useState<string>('');
+    const [isBusy, setIsBusy] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
     const ref = useRef(null);
 
     useClickOutside(ref, () => {
@@ -48,17 +50,15 @@ const News = () => {
         }
     }
 
-    optionsGetCoins.params.limit = '99';
-    optionsNewsSearch.params.count = '20';
-    optionsNewsSearch.params.q = searchNewsRequest;
+    const optionsNewsSearch = getAxiosOptionsNews(20, searchNewsRequest);
 
-    useEffect(()=>{
+    useEffect(() => {
         setSearchNewsRequest(search || 'Cryptocurrencies');
     }, [search])
 
     useEffect(() => {
 
-        const coinsPromise = axios.request(optionsGetCoins);
+        const coinsPromise = axios.request<CoinsResponce>(axiosOptionsCoins);
         const newsPromise = axios.request(optionsNewsSearch);
 
         Promise.all([coinsPromise, newsPromise])
@@ -102,21 +102,20 @@ const News = () => {
                         </ul>
                     </div>
 
+                    <span className='search-result_description'>News for the last month on the: "{searchNewsRequest}".</span>
+
                     <div className='news'>
                         {news.length !== 0
                             ? news.map((news, index) => {
                                 return (
-                                    <div key={index} className='news-card'>
-                                        <NewsCard
-                                            newsName={news.name}
-                                            newsUrl={news.url}
-                                            newsDescription={news.description}
-                                            newsImage={news.image ? news.image.thumbnail.contentUrl : NoImage}
-                                            providerName={news.provider[0].name}
-                                            providerUrl={news.provider[0].image ? news.provider[0].image.thumbnail.contentUrl : NoImage}
-                                            publishedDate={sFormatter(news.datePublished)}
-                                        />
-                                    </div>
+                                    <NewsCard key={index}
+                                        newsName={news.name}
+                                        newsUrl={news.url}
+                                        newsDescription={news.description}
+                                        newsImage={news.image ? news.image.thumbnail.contentUrl : NoImage}
+                                        providerName={news.provider[0].name}
+                                        publishedDate={sFormatter(news.datePublished)}
+                                    />
                                 )
                             })
                             : <span className='news-error'>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Sidebar from '../Sidebar/Sidebar.jsx';
-import Footer from '../Footer/Footer.jsx';
-import HomePage from '../HomePage/HomePage.jsx';
-import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies.jsx';
-import News from '../News/News.jsx';
-import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
+import Sidebar from '../Sidebar/Sidebar';
+import Footer from '../Footer/Footer';
+import HomePage from '../HomePage/HomePage';
+import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
+import News from '../News/News';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 import './App.scss';
 

@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { optionsGetCoins } from '../../helpers/axiosOptions.js';
+import { axiosOptionsCoins } from '../../helpers/axiosOptions';
 
-import CoinCard from '../CoinCard/CoinCard.tsx';
-import LoadingBar from '../LoadingBar/LoadingBar.tsx';
+import CoinCard from '../CoinCard/CoinCard';
+import LoadingBar from '../LoadingBar/LoadingBar';
 
+import { CoinType, CoinsResponce } from "../../types/types";
 
 import './Cryptocurrencies.scss';
 
 const Cryptocurrencies = () => {
 
-    const [coinsList, setCoinsList] = useState([]);
-    const [searchMask, setSearchMask] = useState('');
-    const [isBusy, setIsBusy] = useState(true);
-
-    optionsGetCoins.params.limit = '99';
+    const [coins, setCoins] = useState<CoinType[]>([]);
+    const [searchMask, setSearchMask] = useState<string>('');
+    const [isBusy, setIsBusy] = useState<boolean>(true);
 
     useEffect(() => {
-        axios.request(optionsGetCoins).then((response) => {
-            setCoinsList(response.data.data.coins);
+        axios.request<CoinsResponce>(axiosOptionsCoins).then((response) => {
+            setCoins(response.data.data.coins);
             setIsBusy(false);
         })
-    }, [])
+    }, []);
 
-    const preparedCoins = coinsList.filter((coin) => {
+    const preparedCoins = coins.filter((coin) => {
         return coin.name.toLowerCase().includes(searchMask.toLowerCase())
     });
 
     return (
         <>
             {isBusy
-                ? <LoadingBar className='loading-bar_wrapper'/>
+                ? <LoadingBar className='loading-bar_wrapper' />
                 :
                 <>
                     <div className='form'>
@@ -47,9 +46,7 @@ const Cryptocurrencies = () => {
                         {
                             preparedCoins.map((coin, index) => {
                                 return (
-                                    <div key={index} className='coin-card'>
-                                        <CoinCard {...coin} />
-                                    </div>
+                                    <CoinCard key={index} {...coin} />
                                 )
                             })
                         }

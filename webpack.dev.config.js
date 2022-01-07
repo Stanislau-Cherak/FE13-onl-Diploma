@@ -14,16 +14,5 @@ module.exports = merge(commonConfig, {
     new HTMLWebpackPlugin({
       template: './index.html',
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx|tsx|ts)$/i,
-        exclude: /node-modules/,
-        use: [
-          'babel-loader',
-        ]
-      }
-    ]
-  },
+  ],  
 });

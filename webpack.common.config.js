@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         publicPath: '/'
-    },     
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
@@ -41,7 +41,10 @@ module.exports = {
                 use: [
                     'babel-loader',
                 ]
-            }            
+            }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
 }

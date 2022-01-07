@@ -1,15 +1,11 @@
-const HomeImage = require('../../../image/home.svg') as string;
-const CryptocurrenciesImage = require('../../../image/cyrrencies.svg') as string;
-const ExchangesImage = require('../../../image/exchange.svg') as string;
-const NewsImage = require('../../../image/news.svg') as string;
+import HomeImage from '../../../image/home.svg';
+import CryptocurrenciesImage from '../../../image/cyrrencies.svg';
+import ExchangesImage from '../../../image/exchange.svg';
+import NewsImage from '../../../image/news.svg';
 
-interface menuListTypes {
-    title: string;
-    path: string;
-    image: any;
-}
+import { menuListType } from '../../types/types';
 
-const menuList: menuListTypes[] = [
+const menuList: menuListType[] = [
     {
         title: 'Home',
         path: '/',

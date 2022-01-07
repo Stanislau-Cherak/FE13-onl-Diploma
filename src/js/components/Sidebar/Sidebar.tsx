@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-import MenuItem from '../MenuItem/MenuItem.tsx';
-import menuList from '../MenuItem/menuList.ts';
+import MenuItem from '../MenuItem/MenuItem';
+import menuList from '../MenuItem/menuList';
 import Menu from '../../../image/menu.svg';
 import Close from '../../../image/close.svg';
 
@@ -10,8 +10,8 @@ import './Sidebar.scss';
 
 const Sidebar = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const toggle = ():void => setIsOpen(!isOpen);
 
     return (
 

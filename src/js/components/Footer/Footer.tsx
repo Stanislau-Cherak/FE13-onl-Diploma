@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
-import menuList from "../MenuItem/menuList.ts";
+import menuList from "../MenuItem/menuList";
 
 import './Footer.scss';
 

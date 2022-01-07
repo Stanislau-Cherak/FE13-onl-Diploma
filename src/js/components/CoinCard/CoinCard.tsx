@@ -1,25 +1,18 @@
 import React from "react";
 
-import { nFormatter } from "../../helpers/nFormatter.js";
+import { nFormatter } from "../../helpers/nFormatter";
 
 import './CoinCard.scss';
 
-interface CoinCardProps {
-    rank: number;
-    name: string;
-    iconUrl: string;
-    price: string;
-    marketCap: string;
-    change: string;
-}
+import { CoinType } from "../../types/types.js";
 
-const CoinCard: React.FC<CoinCardProps> = ({ rank, name, iconUrl, price, marketCap, change }) => {
+const CoinCard: React.FC<CoinType> = ({ id, rank, name, iconUrl, price, marketCap, change }) => {
 
-    const preparedPrice=nFormatter(Number(price), 2);
-    const preparedMarketCap=nFormatter(Number(marketCap), 2);
+    const preparedPrice = nFormatter(Number(price), 2);
+    const preparedMarketCap = nFormatter(marketCap, 2);
 
     return (
-        <>
+        <div className='coin-card'>
             <div className='card-header'>
                 <span className='card-header_title'>{rank}. {name}</span>
                 <img src={iconUrl} alt={name} />
@@ -35,7 +28,7 @@ const CoinCard: React.FC<CoinCardProps> = ({ rank, name, iconUrl, price, marketC
                     Daily Change: {change}
                 </span>
             </div>
-        </>
+        </div>
     )
 }
 

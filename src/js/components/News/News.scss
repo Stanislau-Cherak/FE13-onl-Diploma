@@ -3,22 +3,20 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 -15px;
-    align-items: flex-end;    
-    .news-card {
-        flex:1 1 40%;
-        min-width: 200px;
-        margin: 0px 15px 25px;
-        padding: 15px 20px;
-        border: 2px solid #185ee0;
-        border-radius: 5px;
-        box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);          
-    }
+    align-items: flex-end;
+}
+
+.search-result_description {
+    display: block;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .form {
     position: relative;   
     max-width: 60%;
-    margin-bottom: 50px;
+    margin: 50px 0px 25px;
     #live-search {
         width: 100%;
         padding: 10px;
