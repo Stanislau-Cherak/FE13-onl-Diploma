@@ -7,6 +7,7 @@ import HomePage from '../HomePage/HomePage';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
 import Exchanges from '../Exchanges/Exchanges';
 import News from '../News/News';
+import CoinInfo from '../CoinInfo/CoinInfo';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 import './App.scss';
@@ -22,12 +23,13 @@ function App() {
                     <Route path='/Cryptocurrencies' element={<Cryptocurrencies />} />
                     <Route path='/Exchanges' element={<Exchanges />} />
                     <Route path='/News' element={<News />}>
-                    <Route path='/News/:search' element={<News />}/>
+                        <Route path='/News/:search' element={<News />} />
                     </Route>
+                    <Route path='/Coin/:id' element={<CoinInfo />} />
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }

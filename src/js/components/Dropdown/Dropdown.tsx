@@ -6,14 +6,14 @@ import useClickOutside from '../../helpers/useClickOutside';
 import './Dropdown.scss';
 
 interface DropdownProps {
+  selectedValue:string;
   optionsList: string[];
-  onClick: () => void;
+  onClick: (opt:string) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ optionsList, onClick }) => {
+const Dropdown: React.FC<DropdownProps> = ({ selectedValue, optionsList, onClick }) => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
   const ref = useRef(null);
 
   useClickOutside(ref, () => setIsOpen(false));
@@ -22,7 +22,7 @@ const Dropdown: React.FC<DropdownProps> = ({ optionsList, onClick }) => {
 
 
   function handleOnClick(option: string) {
-    setSelectedValue(option);
+    onClick(option);
     toggle();
   }
 

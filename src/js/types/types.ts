@@ -113,6 +113,16 @@ type DataExchangesType = {
     stats: StatsExchangesType;
 }
 
+type CoinHistoryType={
+    price:string;
+    timestamp:number;
+}
+
+export type CoinHistoryDataType={
+    change:number;
+    history:CoinHistoryType[];
+}
+
 export interface CoinsResponce {
     status: string;
     data: DataCoinsType;
@@ -126,4 +136,9 @@ export interface CoinResponce {
 export interface ExchangesResponce {
     status: string;
     data: DataExchangesType;
+}
+
+export interface CoinHistoryResponce {
+    status:string;
+    data: CoinHistoryDataType;
 }

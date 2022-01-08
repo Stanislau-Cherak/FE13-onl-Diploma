@@ -4,7 +4,7 @@
   justify-items: end;
   align-items: center;
   grid-template-columns:  1fr 1fr 1fr 1fr;
-  grid-template-areas: 'title 24hVolume market share' 'description description description description';
+  grid-template-areas: 'title 24hVolume market share';
   gap: 10px;
   padding: 10px 10px 0px 10px;
   font-size: calc(10px + 0.5vw);
@@ -24,10 +24,8 @@
   }  
 }
 
-.exchange-card {
-  
+.exchange-card {  
   border-radius: 5px;
   border: 2px solid #185ee0;
-  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15); 
-  
+  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);   
 }

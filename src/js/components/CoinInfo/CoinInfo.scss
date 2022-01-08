@@ -1,0 +1,151 @@
+.coin-info{
+  margin-top: 50px;
+  .coin-title{
+    display: block;
+    text-align: center;
+    font-size: calc(10px + 1vw);
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+  .coin-title_description{
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;    
+    margin-bottom: 40px;
+  }
+  .curve-description{
+    display: flex;
+    margin: 0px -15px 25px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    .curve-title{
+      display: block;
+      margin: 0px 15px;
+      text-align: center;
+      font-size: calc(10px + 1vw);
+    }
+    .curve-description_text {
+      margin: 0px 15px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+  }
+  .curve{
+    margin-bottom: 40px;
+  }
+}
+
+.statistics {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -15px 25px;
+  justify-content: center;
+  .statistics-card {
+    flex:1 1 45%;
+    margin:0px 15px;
+    .statistics-card_title{
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 600;    
+      margin-bottom: 25px;
+    }
+    .statistics-card_description{
+      display: block;
+      font-size: 1.1rem;
+      line-height: 1.3rem;
+      margin-bottom: 25px;
+    }
+    .statistics-card_body{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      .statistics-card_body-description{
+        padding: 10px;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      .statistics-card_value{
+        justify-self: end;
+        padding: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  margin: o -15px 50px;
+  justify-content: center;
+  .about-description{
+    flex: 1 1 55%;
+    margin: 0px 15px;
+    &_title{
+      display: block;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    &_text {
+      font-size: 1.1rem;
+      p{
+        display: block;
+        margin-bottom: 15px;
+        line-height: 1.5rem;
+      }
+      h3{
+        display: block;
+        margin-bottom: 15px;
+        line-height: 1.5rem;
+        font-weight: 600;
+      }      
+    }
+
+  }
+  .about-links{
+    flex: 1 1 30%;
+    margin: 0 15px;
+    &_title{
+      display: block;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    &_body{
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      line-height: 1.5rem;
+      font-weight: 600;
+      .link{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px -10px 25px;
+        &-name{
+          margin: 0px 10px;
+          &::first-letter{
+            text-transform: uppercase;
+          }          
+        }
+        a{
+          margin: 0px 10px;          
+        }
+      }      
+    }
+  }
+
+}
+
+.dropdown{
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  height: 25px;
+  margin-bottom: 30px;
+}

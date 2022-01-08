@@ -8,7 +8,7 @@ import './ExchangeCard.scss';
 
 const ExchangeCard: React.FC<ExchangeType> = ({ name, rank, iconUrl, description, volume, numberOfMarkets, marketShare }) => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const itemClickHandler = () => {
     setIsOpen(!isOpen)

@@ -9,16 +9,21 @@
 
 .dropdown-wrapper {
     display: flex;
-    min-height: 38px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    min-width: 25%;
+    min-height: 25px;
     flex-wrap: wrap;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     .dropdown-header {
       @include styling();
       display: flex;
       justify-content: space-between;
       cursor: pointer;
       width: 100%;
-      padding: 1.2rem 2rem;
+      padding: 0.75rem 2rem;
       &_title-bold {
         display: block;
         margin-right: 1rem;
@@ -76,6 +81,7 @@
   
           &:hover, &:focus {
             cursor: pointer;
+            color: #fff;
             font-weight: bold;
             background-color: #185ee0;
           }
