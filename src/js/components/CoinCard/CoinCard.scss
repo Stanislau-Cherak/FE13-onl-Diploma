@@ -1,12 +1,23 @@
 .coin-card {
     cursor: pointer;
-    flex:1 1 27%;    
+    flex:0 1 28%;    
     min-width: 200px;
     margin: 0px 15px 25px;
     padding: 15px 20px;
     border: 2px solid #185ee0;
     border-radius: 5px;
-    box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);          
+    box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);
+    transition: 0.3s;
+    &:hover {
+        border: 2px solid #fdbcb4;
+        box-shadow: 0 0 1px 0 rgba(#fdbcb4, 0.15), 0 6px 12px 0 rgba(#fdbcb4, 0.15);
+    }
+    @media (max-width: 1010px) {
+        flex:0 1 45%;    
+    }
+    @media (max-width: 680px) {
+        flex:0 1 60%;    
+    }           
 }
 
 .card-header {

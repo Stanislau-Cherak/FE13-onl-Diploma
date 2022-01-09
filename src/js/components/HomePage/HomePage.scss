@@ -32,20 +32,41 @@
     }
 }
 
+.home-coins_header, .home-news_header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0px -15px;
+    .home_title {
+        display: block;
+        flex:0 1 auto;
+        margin: 0px 15px 50px;
+        font-size: calc(15px + 1vw);
+        color:#185ee0;
+        font-weight: 600;
+        @media (max-width: 485px) {
+            margin-bottom: 25px;
+        }    
+    }
+    a {
+        display: block;
+        flex:0 1 auto;
+        margin: 0px 15px 25px;
+        font-size: calc(10px + 1vw);
+        font-weight: 600;
+        color:#185ee0;
+    }   
+}
+
+
 .home-coins_cards{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 -15px;
-    align-items: flex-end;    
-    a {
-        display: block;
-        flex:1 1 60%;
-        margin: 0px 15px 25px;
-        font-size: calc(15px + 1vw);
-        font-weight: 600;
-        color:#185ee0;
-    }    
+    @media (max-width: 1010px) {
+        justify-content: center;        
+    }
 }
 
 .home-news_cards{
@@ -53,14 +74,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 -15px;
-    align-items: flex-end;   
-    a {
-        display: block;
-        flex:1 1 40%;
-        margin: 0px 15px 25px;
-        font-size: calc(15px + 1vw);
-        font-weight: 600;
-        color:#185ee0;
+    @media (max-width: 1010px) {
+        justify-content: center;        
     }    
 }
 

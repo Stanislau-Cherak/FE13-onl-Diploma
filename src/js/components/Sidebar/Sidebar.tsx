@@ -5,17 +5,25 @@ import MenuItem from '../MenuItem/MenuItem';
 import menuList from '../MenuItem/menuList';
 import Menu from '../../../image/menu.svg';
 import Close from '../../../image/close.svg';
+import Logo from '../../../image/logo.svg';
 
 import './Sidebar.scss';
 
 const Sidebar = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const toggle = ():void => setIsOpen(!isOpen);
+    const toggle = (): void => setIsOpen(!isOpen);
 
     return (
 
         <nav className={classNames('navigation', isOpen ? 'bg' : undefined)}>
+
+            <div className='logo'>
+                <a href='/' className='logo-link'>
+                    <img src={Logo} className='logo-icon' alt='CryptoWorld' />
+                    <span className='logo-title'>CryptoWorld</span>
+                </a>
+            </div>
 
             <div
                 tabIndex={0}
@@ -39,7 +47,7 @@ const Sidebar = () => {
                     })
                 }
             </ul>
-        </nav>
+        </nav >
     )
 }
 

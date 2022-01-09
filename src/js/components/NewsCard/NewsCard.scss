@@ -1,58 +1,55 @@
 .news-card {
-    flex:1 1 40%;
+    flex:0 1 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     min-width: 200px;
     margin: 0px 15px 25px;
-    padding: 15px 20px;
+    padding: 15px;
     border: 2px solid #185ee0;
     border-radius: 5px;
-    box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);          
+    box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);
+    @media (max-width: 1010px) {
+        flex:0 1 45%;    
+    }
+    @media (max-width: 920px) {
+        flex:0 1 60%;    
+    }               
 }
 
 .news-card_header{
+    margin-bottom: 15px;
     img {
-        width: 100%;
-        height: 100%;
+        width: 100px;
+        height: 100px;
+        display: block;
         position: relative;
         overflow: hidden;
-        margin-bottom: 25px;
-    }
+        margin: 0px auto 25px;
+    }    
 }
 
 .news-card_body {
-    margin-bottom: 25px;
-    font-size: 1.2rem;
-    .body_title {
-        display: inline-block;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin: 0px 10px 15px 0px;
-    }
-    .body_description {
-        line-height: 1.5rem;
-        margin: 0px 10px 15px 0px;
-    }
-    .body_provider {
-        margin-bottom: 25px;       
-        .provider_title {
+    margin-bottom: 15px;    
+    font-size: 1.1rem;
+    .time, .provider, .news-main {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0px -10px 15px;
+        &_title {
             display: block;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0px 10px 15px 0px;
+            margin:0px 10px 15px;
+            font-weight: 500;
         }
-        img {
-            width: 30px;
-            height: 30px;
-            margin: 0 10px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            object-fit: cover;
-            display: inline-block;
+        &_description {
+            display: block;
+            margin:0px 10px 15px;
         }
-    }
-    .news-main_title {
-        margin-bottom: 30px;
-    }
+    }    
+}
+
+.news-main_title{
+    margin:0px 10px 25px !important;
 }
 
 .outside_link{

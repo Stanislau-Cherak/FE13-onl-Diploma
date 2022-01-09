@@ -22,7 +22,7 @@ const HomePage = () => {
     const [news, setNews] = useState([]);
     const [isBusy, setIsBusy] = useState<boolean>(true);
 
-    const optionsNewsSearch = getAxiosOptionsNews(5, 'Cryptocurrencies');
+    const optionsNewsSearch = getAxiosOptionsNews(7, 'Cryptocurrencies');
 
     useEffect(() => {
 
@@ -66,7 +66,11 @@ const HomePage = () => {
                     </div>
 
                     <div className='home-coins_section'>
-                        <h2 className='home_title'>Top 10 Criptos In The World</h2>
+
+                        <div className='home-coins_header'>
+                            <h2 className='home_title'>Top 10 Criptos In The World</h2>
+                            <NavLink to={'/Cryptocurrencies'}>Show More</NavLink>
+                        </div>
 
                         <div className='home-coins_cards'>
                             {
@@ -76,12 +80,15 @@ const HomePage = () => {
                                     )
                                 })
                             }
-                            <NavLink to={'/Cryptocurrencies'}>Show More</NavLink>
                         </div>
 
                     </div>
                     <div className='home-news_section'>
-                        <h2 className='home_title'>Latest News</h2>
+
+                        <div className='home-news_header'>
+                            <h2 className='home_title'>Latest News</h2>
+                            <NavLink to={'/News'}>Show More</NavLink>
+                        </div>
                         <div className='home-news_cards'>
                             {
                                 news.map((news, index) => {
@@ -97,7 +104,6 @@ const HomePage = () => {
                                     )
                                 })
                             }
-                            <NavLink to={'/News'}>Show More</NavLink>
                         </div>
                     </div>
                 </>

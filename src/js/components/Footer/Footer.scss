@@ -9,20 +9,20 @@
     background: #185ee0;
     border-radius: 10px;
     text-align: center;
-    padding: 1.5rem 3rem;
+    padding: 1.2rem 1.5rem 0.8rem;
     a {
         color: #fff;
     }
     .autor-link{
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     .footer-menu {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         li {
-            margin: 0 15px;
+            margin: 0 15px 10px;
         }
     }
 }

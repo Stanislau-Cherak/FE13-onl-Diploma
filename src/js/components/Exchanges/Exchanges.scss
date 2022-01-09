@@ -27,5 +27,9 @@
 .exchange-card {  
   border-radius: 5px;
   border: 2px solid #185ee0;
-  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);   
+  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);
+  &:hover {
+    border: 2px solid #fdbcb4;
+    box-shadow: 0 0 1px 0 rgba(#fdbcb4, 0.15), 0 6px 12px 0 rgba(#fdbcb4, 0.15);
+}   
 }
