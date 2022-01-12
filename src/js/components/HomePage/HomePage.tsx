@@ -22,7 +22,7 @@ const HomePage = () => {
     const [news, setNews] = useState([]);
     const [isBusy, setIsBusy] = useState<boolean>(true);
 
-    const optionsNewsSearch = getAxiosOptionsNews(7, 'Cryptocurrencies');
+    const optionsNewsSearch = getAxiosOptionsNews(6, 'Cryptocurrencies');
 
     useEffect(() => {
 

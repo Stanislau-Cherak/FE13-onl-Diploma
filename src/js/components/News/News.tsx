@@ -50,7 +50,7 @@ const News = () => {
         }
     }
 
-    const optionsNewsSearch = getAxiosOptionsNews(20, searchNewsRequest);
+    const optionsNewsSearch = getAxiosOptionsNews(21, searchNewsRequest);
 
     useEffect(() => {
         setSearchNewsRequest(search || 'Cryptocurrencies');
