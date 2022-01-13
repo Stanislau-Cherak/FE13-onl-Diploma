@@ -2,12 +2,11 @@ import React from "react";
 
 import { useNavigate } from 'react-router-dom';
 
-
 import { nFormatter } from "../../helpers/nFormatter";
 
 import './CoinCard.scss';
 
-import { CoinType } from "../../types/types.js";
+import { CoinType } from "../../types/types";
 
 const CoinCard: React.FC<CoinType> = ({ id, rank, name, iconUrl, price, marketCap, change }) => {
 
