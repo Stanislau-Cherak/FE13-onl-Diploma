@@ -1,10 +1,10 @@
 .exchange-card {
   cursor: pointer;
   display: grid;
-  justify-items: end;
+  justify-items: center;
   align-items: center;
   grid-template-columns:  1fr 1fr 1fr 1fr;
-  grid-template-areas: 'title 24hVolume market share' 'description description description description';
+  grid-template-areas: 'title 24hVolume type rating' 'description description description description';
   gap: 10px;
   font-size: 1.2rem;
   font-weight: 600;
@@ -17,35 +17,44 @@
     justify-self: left;
     display: flex;
     align-items: center;
-    grid-area: title;    
-    img {
-      width: 30px;
-      height: 30px;
-      margin: 0 10px;
-    }
+    grid-area: title;   
   }
   &_volume {
     grid-area: 24hVolume;
   } 
-  &_market {
-    grid-area: market;
+  &_type {
+    grid-area: type;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .type{
+      display: block;
+      margin: 0px 5px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.2rem;
+    }
   } 
-  &_share {
-    grid-area: share;
+  &_rating {
+    grid-area: rating;
   }  
 }
 
 .exchange_description {
   grid-area: description;
   justify-self: start;
-  margin-bottom: 10px;
+  margin: 15px 0px 10px;
   font-size: 1.1rem;  
   font-weight: 500;
   line-height: 1.2rem;
-  p{
-    margin-bottom: 5px;
+  .country {
+    font-size: 1.2rem;  
+    font-weight: 600;
   }
-  a{
+  .description {
+    margin: 10px 0px;
+  }  
+  .exchange_link{
     color:#185ee0;
   }
 }

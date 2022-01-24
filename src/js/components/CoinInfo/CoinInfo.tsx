@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
@@ -15,22 +15,22 @@ import { dFormatter } from '../../helpers/dFormatter';
 import LoadingBar from '../LoadingBar/LoadingBar';
 import Dropdown from '../Dropdown/Dropdown';
 
-import { CoinType, CoinResponce, CoinHistoryDataType, CoinHistoryResponce } from '../../types/types';
+import { CoinBigType, CoinResponce, CoinHistoryDataType, CoinHistoryResponce } from '../../types/types';
 
 import './CoinInfo.scss';
 
 const CoinInfo = () => {
 
-  const { id } = useParams();
+  const location = useLocation();
   const firstRender = useRef<boolean>(true);
 
   const [isBusy, setIsBusy] = useState<boolean>(true);
-  const [coin, setCoin] = useState<CoinType>();
+  const [coin, setCoin] = useState<CoinBigType>();
   const [coinHistory, setCoinHistory] = useState<CoinHistoryDataType>();
   const [timeInterval, setTimeInterval] = useState<string>('24h');
 
-  const optionsCoin = getAxiosOptionsCoin(id);
-  const optionsCoinHistory = getAxiosOptionsCoinHistory(id, timeInterval);
+  const optionsCoin = getAxiosOptionsCoin(location.state);
+  const optionsCoinHistory = getAxiosOptionsCoinHistory(location.state, timeInterval);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -59,7 +59,7 @@ const CoinInfo = () => {
   }
 
   const chartData = {
-    labels: coinHistory?.history?.map(history=>dFormatter(history.timestamp)),
+    labels: coinHistory?.history?.map(history => dFormatter(history.timestamp)),
     datasets: [
       {
         label: 'Price in USD',
@@ -68,7 +68,7 @@ const CoinInfo = () => {
         backgroundColor: 'rgba(24, 94, 224, 1)',
         borderColor: 'rgba(24, 94, 224, 1)',
         borderWidth: 2,
-        data: coinHistory?.history?.map(history=>history.price)
+        data: coinHistory?.history?.map(history => Number(history.price).toFixed(2))
       }
     ]
   };
@@ -90,14 +90,14 @@ const CoinInfo = () => {
         ? <LoadingBar className='loading-bar_wrapper' />
         :
         <div className='coin-info'>
-          <span className='coin-title'>{coin.name} {coin.slug} Price</span>
+          <span className='coin-title'>{coin.name} {coin.symbol} Price</span>
           <span className='coin-title_description'>
             {coin.name} live price in US Dollar (USD).
             View value statistics, market cap and supply.
           </span>
 
           <div className='dropdown'>
-            <Dropdown selectedValue={timeInterval} optionsList={['24h', '7d', '30d', '1y', '5y']} onClick={timeChangeHandler} />
+            <Dropdown selectedValue={timeInterval} optionsList={['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y']} onClick={timeChangeHandler} />
           </div>
 
           <div className='curve-description'>
@@ -123,9 +123,9 @@ const CoinInfo = () => {
                 <span className='statistics-card_body-description'>Rank</span>
                 <span className='statistics-card_value'>{coin.rank}</span>
                 <span className='statistics-card_body-description'>24hVolume</span>
-                <span className='statistics-card_value'>{nFormatter(coin.volume, 2)}</span>
+                <span className='statistics-card_value'>{nFormatter(Number(coin['24hVolume']), 2)}</span>
                 <span className='statistics-card_body-description'>Market Cap</span>
-                <span className='statistics-card_value'>{nFormatter(coin.marketCap, 2)}</span>
+                <span className='statistics-card_value'>{nFormatter(Number(coin.marketCap), 2)}</span>
                 <span className='statistics-card_body-description'>All time high (daily avg.)</span>
                 <span className='statistics-card_value'>{nFormatter(Number(coin.allTimeHigh.price), 2)}</span>
               </div>
@@ -142,11 +142,11 @@ const CoinInfo = () => {
                 <span className='statistics-card_body-description'>Number of Exchanges</span>
                 <span className='statistics-card_value'>{coin.numberOfExchanges}</span>
                 <span className='statistics-card_body-description'>Approved Supply</span>
-                <span className='statistics-card_value'>{coin.approvedSupply ? 'yes' : 'no'}</span>
+                <span className='statistics-card_value'>{coin.supply.confirmed ? 'yes' : 'no'}</span>
                 <span className='statistics-card_body-description'>Total Supply</span>
-                <span className='statistics-card_value'>{nFormatter(coin.totalSupply, 2)}</span>
+                <span className='statistics-card_value'>{nFormatter(Number(coin.supply.total), 2)}</span>
                 <span className='statistics-card_body-description'>Circulating Supply</span>
-                <span className='statistics-card_value'>{nFormatter(coin.circulatingSupply, 2)}</span>
+                <span className='statistics-card_value'>{nFormatter(Number(coin.supply.circulating), 2)}</span>
               </div>
             </div>
 
@@ -159,7 +159,8 @@ const CoinInfo = () => {
               </span>
               {coin.description
                 ? <div className='about-description_text' dangerouslySetInnerHTML={{ __html: coin.description }}></div>
-                : <span>Sorry, description not found.</span>}
+                : <span>Sorry, description not found.</span>
+              }
             </div>
 
             <div className='about-links'>

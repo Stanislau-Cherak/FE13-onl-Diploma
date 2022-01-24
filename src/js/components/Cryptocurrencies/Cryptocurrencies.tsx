@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { axiosOptionsCoins } from '../../helpers/axiosOptions';
+import { getAxiosOptionsCoins } from '../../helpers/axiosOptions';
 
 import CoinCard from '../CoinCard/CoinCard';
 import LoadingBar from '../LoadingBar/LoadingBar';
@@ -16,8 +16,10 @@ const Cryptocurrencies = () => {
     const [searchMask, setSearchMask] = useState<string>('');
     const [isBusy, setIsBusy] = useState<boolean>(true);
 
+    const optionsCoins = getAxiosOptionsCoins(99);
+
     useEffect(() => {
-        axios.request<CoinsResponce>(axiosOptionsCoins).then((response) => {
+        axios.request<CoinsResponce>(optionsCoins).then((response) => {
             setCoins(response.data.data.coins);
             setIsBusy(false);
         })

@@ -1,10 +1,10 @@
 .title-table {
   margin-top: 50px;
   display: grid;
-  justify-items: end;
+  justify-items: center;
   align-items: center;
   grid-template-columns:  1fr 1fr 1fr 1fr;
-  grid-template-areas: 'title 24hVolume market share';
+  grid-template-areas: 'title 24hVolume type rating';
   gap: 10px;
   padding: 10px 10px 0px 10px;
   font-size: calc(10px + 0.5vw);
@@ -16,11 +16,11 @@
   &_volume {
     grid-area: 24hVolume;
   } 
-  &_market {
-    grid-area: market;
+  &_type {
+    grid-area: type;
   } 
-  &_share {
-    grid-area: share;
+  &_rating {
+    grid-area: rating;
   }  
 }
 

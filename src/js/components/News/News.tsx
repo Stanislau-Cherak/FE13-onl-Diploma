@@ -5,7 +5,7 @@ import axios from "axios";
 
 import useClickOutside from '../../helpers/useClickOutside';
 
-import { axiosOptionsCoins, getAxiosOptionsNews } from '../../helpers/axiosOptions';
+import { getAxiosOptionsCoins, getAxiosOptionsNews } from '../../helpers/axiosOptions';
 import { aFilter } from '../../helpers/aFilter';
 import { sFormatter } from '../../helpers/sFormatter';
 
@@ -51,6 +51,7 @@ const News = () => {
     }
 
     const optionsNewsSearch = getAxiosOptionsNews(21, searchNewsRequest);
+    const optionsCoins = getAxiosOptionsCoins(99);
 
     useEffect(() => {
         setSearchNewsRequest(search || 'Cryptocurrencies');
@@ -58,7 +59,7 @@ const News = () => {
 
     useEffect(() => {
 
-        const coinsPromise = axios.request<CoinsResponce>(axiosOptionsCoins);
+        const coinsPromise = axios.request<CoinsResponce>(optionsCoins);
         const newsPromise = axios.request(optionsNewsSearch);
 
         Promise.all([coinsPromise, newsPromise])

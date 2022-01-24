@@ -8,7 +8,7 @@ import LoadingBar from '../LoadingBar/LoadingBar';
 
 import { nFormatter } from "../../helpers/nFormatter";
 import { sFormatter } from '../../helpers/sFormatter';
-import { axiosOptionsCoins, getAxiosOptionsNews } from '../../helpers/axiosOptions';
+import { getAxiosOptionsCoins, getAxiosOptionsNews } from '../../helpers/axiosOptions';
 
 import { DataCoinsType, CoinsResponce } from '../../types/types';
 
@@ -23,10 +23,11 @@ const HomePage = () => {
     const [isBusy, setIsBusy] = useState<boolean>(true);
 
     const optionsNewsSearch = getAxiosOptionsNews(6, 'Cryptocurrencies');
+    const optionsCoins = getAxiosOptionsCoins(10);
 
     useEffect(() => {
 
-        const coinsPromise = axios.request<CoinsResponce>(axiosOptionsCoins);
+        const coinsPromise = axios.request<CoinsResponce>(optionsCoins);
         const newsPromise = axios.request(optionsNewsSearch);
 
         Promise.all([coinsPromise, newsPromise])
@@ -74,7 +75,7 @@ const HomePage = () => {
 
                         <div className='home-coins_cards'>
                             {
-                                coinsAllData.coins.slice(0, 10).map((coin, index) => {
+                                coinsAllData.coins.map((coin, index) => {
                                     return (
                                         <CoinCard key={index} {...coin} />
                                     )

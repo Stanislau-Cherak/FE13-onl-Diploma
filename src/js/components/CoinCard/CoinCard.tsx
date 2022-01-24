@@ -8,15 +8,15 @@ import './CoinCard.scss';
 
 import { CoinType } from "../../types/types";
 
-const CoinCard: React.FC<CoinType> = ({ id, rank, name, iconUrl, price, marketCap, change }) => {
+const CoinCard: React.FC<CoinType> = ({ uuid, rank, name, iconUrl, price, marketCap, change }) => {
 
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const preparedPrice = nFormatter(Number(price), 2);
-    const preparedMarketCap = nFormatter(marketCap, 2);
+    const preparedMarketCap = nFormatter(Number(marketCap), 2);
 
-    const cardClickHandler=()=>{
-        navigate(`/Coin/${id}`);
+    const cardClickHandler = () => {
+        navigate(`/Coin/${name}`, { state: uuid });
     }
 
     return (

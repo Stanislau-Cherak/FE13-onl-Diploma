@@ -1,41 +1,57 @@
 import { AxiosRequestConfig } from "axios";
 
-export const axiosOptionsCoins: AxiosRequestConfig = {
-    method: 'GET',
-    url: 'https://coinranking1.p.rapidapi.com/coins',
-    headers: {
-        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': 'a2ef67004dmsh3f5cf4586a1a877p124c0ajsn2d84250d8a19'
+export function getAxiosOptionsCoins(number: number): AxiosRequestConfig {
+    return {
+        method: 'GET',
+        url: 'https://coinranking1.p.rapidapi.com/coins',
+        params: {
+            referenceCurrencyUuid: 'yhjMzLPhuIDl',
+            timePeriod: '24h',
+            tiers: '1',
+            limit: `${number}`,
+            offset: '0'
+        },
+        headers: {
+            'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+            'x-rapidapi-key': '0060b8ce00mshcdd4cc91e36faefp1f326fjsncf88ec66cf0f'
+        }
     }
 }
 
 export const axiosOptionsExchanges: AxiosRequestConfig = {
     method: 'GET',
-    url: 'https://coinranking1.p.rapidapi.com/exchanges',
+    url: 'https://min-api.cryptocompare.com/data/exchanges/general',
     headers: {
-        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': '7d7142ee90msh51e0c53239d7405p1f81d5jsn078463297446'
+        'authorization': 'Apikey {df7360df74b05ca444b47b782e73a95f95e11989d7f6f9b945b3353e693bd4fa}'
     }
 }
 
-export function getAxiosOptionsCoin(id: string): AxiosRequestConfig  {
+export function getAxiosOptionsCoin(uuid: string): AxiosRequestConfig {
     return {
         method: 'GET',
-        url: `https://coinranking1.p.rapidapi.com/coin/${id}`,
+        url: `https://coinranking1.p.rapidapi.com/coin/${uuid}`,
+        params: {
+            referenceCurrencyUuid: 'yhjMzLPhuIDl',
+            timePeriod: '24h'
+        },
         headers: {
             'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-            'x-rapidapi-key': 'a2ef67004dmsh3f5cf4586a1a877p124c0ajsn2d84250d8a19'
+            'x-rapidapi-key': '0060b8ce00mshcdd4cc91e36faefp1f326fjsncf88ec66cf0f'
         }
     }
 }
 
-export function getAxiosOptionsCoinHistory(id:string,time: string): AxiosRequestConfig  {
+export function getAxiosOptionsCoinHistory(uuid: string, time: string): AxiosRequestConfig {
     return {
         method: 'GET',
-        url: `https://coinranking1.p.rapidapi.com/coin/${id}/history/${time}`,
+        url: `https://coinranking1.p.rapidapi.com/coin/${uuid}/history`,
+        params: {
+            referenceCurrencyUuid: 'yhjMzLPhuIDl',
+            timePeriod: time
+        },
         headers: {
             'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-            'x-rapidapi-key': 'a2ef67004dmsh3f5cf4586a1a877p124c0ajsn2d84250d8a19'
+            'x-rapidapi-key': '0060b8ce00mshcdd4cc91e36faefp1f326fjsncf88ec66cf0f'
         }
     }
 }
@@ -47,6 +63,7 @@ export function getAxiosOptionsNews(count: number, q: string): AxiosRequestConfi
         params: {
             q: q,
             safeSearch: 'Moderate',
+            offset: '10',
             textFormat: 'Raw',
             freshness: 'Month',
             mkt: 'en-US',
